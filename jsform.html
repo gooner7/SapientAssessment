@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        .bs-example div[class^="col"] {
+            border: 1px solid white;
+            text-align: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST">
+
+    
+    <div class="container">
+            <div class="alert alert-success" align="center">REGISTRATION FORM</div>
+            <div class="jumbotron">
+
+        <div class="bs-example">
+            <div class="row mt-3">
+                <label class="col-md-4">FIRST NAME:</label>
+                <input type="text" class="form-control col-md-4" id="fname" >
+            </div>
+
+            <div class="row mt-3">
+                <label class="col-md-4">LAST NAME:</label>
+                <input type="text" class="form-control col-md-4" id="lname" >
+            </div>
+
+            <div class="row mt-3">
+                <label class="col-md-4">AGE:</label>
+                <input type="number" class="form-control col-md-4 " id="age" >
+            </div>
+
+            <div class="row mt-3">
+                    <label class="col-md-4">GENDER:</label>
+                    <select class="form-control col-md-2" id="gender" >
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+            <div class="row mt-3">
+                <label class="col-md-4">COUNTRY:</label>
+                <select class="form-control col-md-2" id="country">
+                    <option>India</option>
+                    <option>Pakistan</option>
+                </select>
+            </div>
+
+            <div class="row mt-4 col-md-4" align="center">
+                <input type="checkbox" name="agree" id="agree" onclick='EnableSubmit(this)' > Accept
+            </div>
+
+            <div class="row mt-4 col-md-4" align="center">
+                <button class="btn btn-primary" id="register">Register</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </form>
+    <script>
+            var EnableSubmit;
+            var firstName = document.getElementById('fname');
+            var lastName = document.getElementById('lname');
+            var sbmt = document.getElementById("register");
+            var age = document.getElementById('age');
+            var gender = document.getElementById('gender');
+            var country = document.getElementById('country');
+            
+            firstName.required = true;
+            lastName.required = true;
+            age.required = true;
+            gender.required = true;
+            country.required = true;
+            
+            sbmt.disabled = true;
+            
+            sbmt.addEventListener('click',function(e){
+                if (age.value < 18 || age.value > 99)
+            { 
+                alert("The age must be a number between 18 and 100");    
+            }
+            if(firstName.value.length > 20 || lastName.value.length > 20){
+                alert("Please enter less than 20 characters");
+            }
+            
+            })
+            
+            EnableSubmit = function(val)
+            {
+                if (val.checked == true)
+                {
+                    sbmt.disabled = false;
+                }
+                else
+                {
+                    sbmt.disabled = true;
+                }
+            }
+            
+            firstName.addEventListener('keypress',function(e){
+            validateInput(e, /^[a-zA-Z ]*$.*/);
+            });
+            
+            lastName.addEventListener('keypress',function(e){
+            validateInput(e, /^[a-zA-Z ]*$.*/);
+            });
+            
+            
+            function validateInput(e,myregex){
+                if(myregex.test(e.key)){
+            
+                }
+                else{
+                    e.preventDefault();
+                }
+            }
+            </script>
+</body>
+
+</html>
